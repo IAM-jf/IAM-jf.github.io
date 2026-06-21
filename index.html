@@ -1,0 +1,544 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Jamie Fields | IAM Professional</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        /* Reset & Base */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* ── SIDEBAR ── */
+        #sidebar {
+            position: fixed;
+            top: 0; right: 0;
+            width: 300px;
+            height: 100vh;
+            background: #1a2233;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        #sidebar .inner {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Banner / photo block */
+        #sidebar .banner {
+            width: 100%;
+            height: 220px;
+            background: url('https://images.unsplash.com/photo-1533228100845-08145b01de14?w=600&q=80') center/cover no-repeat;
+            position: relative;
+        }
+        #sidebar .avatar {
+            position: absolute;
+            bottom: -48px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96px; height: 96px;
+            border-radius: 50%;
+            border: 4px solid #1a2233;
+            background: url('https://media.licdn.com/dms/image/v2/D4E03AQFxxxxxxxx/profile-displayphoto-shrink_400_400/') center/cover no-repeat, #2d3a52;
+            overflow: hidden;
+        }
+
+        /* Name block */
+        #sidebar .nameblock {
+            margin-top: 58px;
+            text-align: center;
+            padding: 0 1.5rem 1.5rem;
+        }
+        #sidebar .nameblock h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: #fff;
+        }
+        #sidebar .nameblock p {
+            font-size: 0.78rem;
+            color: #8fa3c0;
+            margin-top: 0.4rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        #sidebar .nameblock .location {
+            font-size: 0.75rem;
+            color: #6b84a0;
+            margin-top: 0.5rem;
+            font-style: normal;
+        }
+
+        /* Nav */
+        #sidebar nav {
+            width: 100%;
+            border-top: 1px solid #2d3a52;
+        }
+        #sidebar nav a {
+            display: block;
+            padding: 0.85rem 1.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #8fa3c0;
+            border-bottom: 1px solid #2d3a52;
+            transition: color 0.2s, background 0.2s;
+        }
+        #sidebar nav a:hover,
+        #sidebar nav a.active {
+            color: #fff;
+            background: #243047;
+        }
+
+        /* Social icons */
+        #sidebar .social {
+            margin-top: auto;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        #sidebar .social a {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: #2d3a52;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8fa3c0;
+            font-size: 0.85rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        #sidebar .social a:hover { background: #3d5a8a; color: #fff; }
+
+        /* ── MAIN CONTENT ── */
+        #main {
+            margin-right: 300px;
+            width: calc(100% - 300px);
+            min-height: 100vh;
+        }
+
+        /* Hero banner */
+        #main .hero {
+            width: 100%;
+            height: 320px;
+            background: url('https://images.unsplash.com/photo-1533228100845-08145b01de14?w=1400&q=80') center/cover no-repeat;
+            position: relative;
+        }
+        #main .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(26,34,51,0.35), rgba(26,34,51,0.7));
+        }
+
+        /* Sections */
+        .section {
+            padding: 3.5rem 4rem;
+            border-bottom: 1px solid #e2e6ed;
+            background: #fff;
+        }
+        .section:nth-child(even) { background: #f9fafb; }
+
+        .section h2 {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #2d5a9e;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid #2d5a9e;
+            display: inline-block;
+        }
+        .section h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1a2233;
+            margin-bottom: 0.3rem;
+        }
+        .section p {
+            font-size: 0.92rem;
+            line-height: 1.75;
+            color: #444;
+        }
+        .section p + p { margin-top: 0.8rem; }
+
+        /* About */
+        #about .lead {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a2233;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Certs grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .cert-card {
+            background: #f0f4fa;
+            border-left: 4px solid #2d5a9e;
+            border-radius: 4px;
+            padding: 1rem 1.2rem;
+        }
+        .cert-card .cert-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1a2233;
+            line-height: 1.35;
+        }
+        .cert-card .cert-issuer {
+            font-size: 0.75rem;
+            color: #2d5a9e;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .cert-card .cert-date {
+            font-size: 0.72rem;
+            color: #778899;
+            margin-top: 0.2rem;
+        }
+
+        /* Skills tags */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .tag {
+            background: #1a2233;
+            color: #8fa3c0;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            border-radius: 3px;
+        }
+
+        /* Lab sections */
+        .lab-category {
+            margin-top: 1.8rem;
+        }
+        .lab-category h3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #2d5a9e;
+            margin-bottom: 0.75rem;
+        }
+        .lab-item {
+            margin-bottom: 1.1rem;
+            padding-left: 1rem;
+            border-left: 2px solid #e2e6ed;
+        }
+        .lab-item strong {
+            display: block;
+            font-size: 0.88rem;
+            color: #1a2233;
+            margin-bottom: 0.2rem;
+        }
+        .lab-item p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.65;
+        }
+
+        /* Experience */
+        .exp-item { margin-bottom: 2rem; }
+        .exp-item .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+        .exp-item .exp-title { font-size: 1rem; font-weight: 700; color: #1a2233; }
+        .exp-item .exp-date { font-size: 0.78rem; color: #778899; white-space: nowrap; }
+        .exp-item .exp-company { font-size: 0.82rem; color: #2d5a9e; font-weight: 600; margin-bottom: 0.6rem; }
+        .exp-item ul { padding-left: 1.1rem; }
+        .exp-item ul li { font-size: 0.88rem; color: #444; line-height: 1.7; margin-bottom: 0.3rem; }
+
+        /* Contact */
+        #contact .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        #contact .contact-links a {
+            font-size: 0.9rem;
+            color: #2d5a9e;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #contact .contact-links a:hover { color: #1a2233; }
+
+        /* Footer */
+        footer {
+            background: #1a2233;
+            color: #4a6080;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            #sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+            #sidebar .banner { height: 180px; }
+            #main { margin-right: 0; width: 100%; }
+            .section { padding: 2.5rem 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+    <div class="inner">
+        <div class="banner">
+            <div class="avatar"></div>
+        </div>
+        <div class="nameblock">
+            <h1>Jamie Fields</h1>
+            <p>Identity &amp; Access Management | SC-300 Certified<br>Microsoft Entra ID | Federal Compliance</p>
+            <p class="location">Atlanta, Georgia</p>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#skills">Core Skills</a>
+            <a href="#lab">IAM Lab Project</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="social">
+            <a href="https://www.linkedin.com/in/jamie-fields/" target="_blank" title="LinkedIn">in</a>
+            <a href="https://github.com/IAM-jf" target="_blank" title="GitHub">gh</a>
+            <a href="mailto:jf@jamiefields.tech" title="Email">@</a>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+    <div class="hero"></div>
+
+    <!-- ABOUT -->
+    <div class="section" id="about">
+        <h2>About</h2>
+        <p class="lead">Identity and Access Management professional with 8 years of experience in regulated federal environments.</p>
+        <p>Certified Microsoft Identity and Access Administrator (SC-300) with hands-on experience in Microsoft Entra ID, Active Directory, Conditional Access policies, and role-based access control.</p>
+        <p>My background supporting the U.S. Department of Labor as a contracting client gave me a strong foundation in data integrity, regulatory adherence, and the protection of sensitive personal and financial information — including HIPAA regulations and PII protection standards. I bring a detail-oriented, compliance-minded approach to IAM: understanding not just how access works, but why it matters for organizational security and regulatory accountability.</p>
+        <p>Seeking IAM Analyst or Identity Security roles in the Atlanta area. Open to contract, contract-to-hire, and full-time opportunities.</p>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section" id="certifications">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-name">Microsoft Certified: Identity and Access Administrator Associate</div>
+                <div class="cert-issuer">Microsoft</div>
+                <div class="cert-date">Issued Apr 2026 · Expires Apr 2027 · SC-300</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
+                <div class="cert-issuer">Microsoft</div>
+                <div class="cert-date">AZ-900</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">CompTIA Security+ ce Certification</div>
+                <div class="cert-issuer">CompTIA</div>
+                <div class="cert-date">Issued Feb 2024 · Expires Feb 2027</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">Cybersecurity Foundations: Governance, Risk, and Compliance (GRC)</div>
+                <div class="cert-issuer">LinkedIn Learning</div>
+                <div class="cert-date">Issued Jul 2024</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">Cyber Security Governance, Risk, and Compliance (GRC) Mastery</div>
+                <div class="cert-issuer">GRC Mastery</div>
+                <div class="cert-date">Issued Apr 2024</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+        <h2>Core Skills</h2>
+        <div class="tag-list">
+            <span class="tag">Microsoft Entra ID</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">Conditional Access</span>
+            <span class="tag">Privileged Identity Management</span>
+            <span class="tag">Role-Based Access Control</span>
+            <span class="tag">Zero Trust</span>
+            <span class="tag">Identity Protection</span>
+            <span class="tag">Microsoft Graph PowerShell</span>
+            <span class="tag">Hybrid Identity</span>
+            <span class="tag">Entitlement Management</span>
+            <span class="tag">Azure RBAC</span>
+            <span class="tag">HIPAA / PII Compliance</span>
+            <span class="tag">Federal Compliance</span>
+            <span class="tag">Audit Readiness</span>
+        </div>
+    </div>
+
+    <!-- IAM LAB -->
+    <div class="section" id="lab">
+        <h2>IAM Lab Project</h2>
+        <h3>Microsoft Entra ID &amp; Active Directory — Hands-On IAM Build</h3>
+        <p style="margin-top:0.6rem;">A hands-on identity and access management build in a live Microsoft Entra ID tenant (<strong>JamieFieldsTech.onmicrosoft.com</strong>) with a synced on-premises Active Directory forest, covering privileged access governance, Conditional Access, identity risk management, and hybrid identity — executed through the Entra admin center, Active Directory Users and Computers, and Microsoft Graph PowerShell.</p>
+        <p style="margin-top:0.5rem; color:#2d5a9e; font-size:0.82rem; font-style:italic;">Background: Transitioning into IAM from a compliance/GRC contractor role supporting a federal workforce program. This lab translates governance and audit experience into hands-on identity infrastructure work.</p>
+
+        <div class="lab-category">
+            <h3>Access Governance, Privileged Access &amp; Hybrid Identity</h3>
+            <div class="lab-item">
+                <strong>Conditional Access</strong>
+                <p>Layered policies built and staged in report-only before enforcement: blocking legacy authentication and requiring compliant-device status for Office 365 access. Validated using the What If tool and the Conditional Access insights workbook before going live.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Privileged Identity Management (PIM)</strong>
+                <p>Converted the Application Administrator role from standing access to just-in-time: PIM-eligible with a 90-day window, 8-hour max activation, and mandatory MFA plus written justification at activation. Verified through PIM audit logs confirming the full eligible-assignment and activation event trail.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Identity Protection</strong>
+                <p>Built risk-based Conditional Access policies (sign-in risk medium+ → MFA; user risk high → MFA + forced password change), both in report-only with break-glass exclusion. Extended with a live Tor simulation to generate real anonymous-IP risk signals, reviewed in Risky Users and Risk Detections reports.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Access Reviews</strong>
+                <p>Two recurring quarterly reviews — group membership and application role assignment — each with a 7-day window, auto-apply, and default decision of Deny, ensuring non-responsive reviewers result in automatic access removal.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Entitlement Management</strong>
+                <p>Built a catalog and access package enabling self-service group membership requests through the My Access portal, gated by an approval workflow — replacing ad-hoc access grants with a governed, auditable process.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Hybrid Identity (Entra Connect)</strong>
+                <p>Installed Entra Connect on the domain controller, configured Password Hash Sync scoped to specific OUs, confirmed all AD users landed in Entra ID with OnPremisesSyncEnabled: true. Validated hybrid sign-in end-to-end, enabled password writeback, and tested Conditional Access MFA against synced users.</p>
+            </div>
+        </div>
+
+        <div class="lab-category">
+            <h3>Application &amp; Workload Identity</h3>
+            <div class="lab-item">
+                <strong>App Registration &amp; API Permissions</strong>
+                <p>Registered an application with delegated (User.Read) and application-level (User.ReadWrite.All, Group.Read.All) Microsoft Graph permissions, granted admin consent, then audited credentials and flagged elevated permissions requiring business justification.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Managed Identity + Key Vault</strong>
+                <p>Enabled a system-assigned managed identity on the domain controller VM, used the IMDS token flow to retrieve a Key Vault secret with zero stored credentials.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Custom Azure RBAC Role</strong>
+                <p>Built a least-privilege custom role (read-only on VM properties and instance view) and assigned it to a test user, rather than using a broader built-in role.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Workload Identity Federation</strong>
+                <p>Configured a federated credential on the registered app simulating GitHub Actions OIDC trust — passwordless, certificate-free workload authentication.</p>
+            </div>
+        </div>
+
+        <div class="lab-category">
+            <h3>Directory Administration</h3>
+            <div class="lab-item">
+                <strong>Active Directory Build</strong>
+                <p>Stood up a Windows Server 2025 domain controller from scratch on Azure, promoted to a new forest (jamielabstech.local), and confirmed AD DS and DNS roles.</p>
+            </div>
+            <div class="lab-item">
+                <strong>OU Structure, GPOs &amp; Group-Based Licensing</strong>
+                <p>Built a department-based OU hierarchy (IT/HR), created users and security groups, and configured GPOs including login banner and Control Panel restriction for both departments, with command-prompt restriction added for HR.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Verification Pattern</strong>
+                <p>Every change made in the portal was confirmed independently via Microsoft Graph PowerShell or AD cmdlets — mirroring real-world change validation rather than relying on a single source of truth.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" id="experience">
+        <h2>Experience</h2>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-title">Admissions Representative</div>
+                <div class="exp-date">Jul 2023 – Present</div>
+            </div>
+            <div class="exp-company">Adams and Associates, Inc. · Client: U.S. Department of Labor, Job Corps · Atlanta, GA</div>
+            <ul>
+                <li>Governed access to highly sensitive PII — SSNs, passports, health records, criminal background checks — applying least-privilege and need-to-know access principles across all stakeholder interactions.</li>
+                <li>Enforced HIPAA and DOL data privacy regulations through rigorous identity verification before any record access or disclosure.</li>
+                <li>Maintained detailed case notes and audit trails documenting all access events and stakeholder communications to support regulatory compliance and audit readiness.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-title">Outreach &amp; Admissions Counselor</div>
+                <div class="exp-date">Jul 2018 – Jun 2023</div>
+            </div>
+            <div class="exp-company">Management &amp; Training Corporation · Client: U.S. Department of Labor, Job Corps · Atlanta, GA</div>
+            <ul>
+                <li>Administered access controls within secure federal IT systems, managing sensitive case data lifecycle and enforcing role-based data permissions.</li>
+                <li>Supported internal and external compliance audits by compiling access records and producing audit-ready evidence packages aligned with DOL security requirements.</li>
+                <li>Collaborated with IT, HR, and security teams to identify access control gaps and advance data privacy program objectives.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section" id="contact">
+        <h2>Contact</h2>
+        <p>Open to IAM Analyst, Identity Security, and related roles in the Atlanta area. Available for contract, contract-to-hire, and full-time opportunities.</p>
+        <div class="contact-links">
+            <a href="mailto:jf@jamiefields.tech">✉ jf@jamiefields.tech</a>
+            <a href="https://www.linkedin.com/in/jamie-fields/" target="_blank">→ linkedin.com/in/jamie-fields</a>
+            <a href="https://github.com/IAM-jf" target="_blank">→ github.com/IAM-jf</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Jamie Fields · Identity &amp; Access Management Professional · Atlanta, GA</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
