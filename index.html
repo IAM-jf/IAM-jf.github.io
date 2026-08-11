@@ -3,7 +3,7 @@
 <head>
     <title>Jamie Fields | IAM Professional</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         /* Reset & Base */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -341,7 +341,7 @@
             <a href="#about">About</a>
             <a href="#certifications">Certifications</a>
             <a href="#skills">Core Skills</a>
-            <a href="#lab">IAM Lab Project</a>
+            <a href="#lab">Hands-On IAM Experience</a>
             <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -361,8 +361,9 @@
     <!-- ABOUT -->
     <div class="section" id="about">
         <h2>About</h2>
-        <p class="lead">Identity and access management professional with 8 years enforcing identity-verification and compliance gating for federally regulated PII under USDOL oversight — the front-end control point for identity lifecycle, recertification, and audit-evidence integrity.</p>
-        <p>Certified Microsoft Identity and Access Administrator (SC-300) with hands-on experience in Microsoft Entra ID, Active Directory, Conditional Access policies, and role-based access control.</p>
+        <p class="lead">I combine eight years of federally regulated compliance experience with independent hands-on identity and access management experience in Microsoft Entra ID and Active Directory.</p>
+        <p>Across that professional work, I have performed identity verification and eligibility adjudication, reviewed supporting evidence, safeguarded sensitive PII, maintained regulatory documentation and decision traceability, and communicated with applicants, managers, and program stakeholders.</p>
+        <p>Separately, my independent hands-on IAM experience includes identity and access management implementation, testing, troubleshooting, and validation in Microsoft Entra ID and Active Directory. I am a Microsoft Certified Identity and Access Administrator (SC-300) with hands-on experience in Conditional Access policies and role-based access control.</p>
         <p>My background supporting the U.S. Department of Labor as a contracting client gave me a strong foundation in data integrity, regulatory adherence, and the protection of sensitive personal and financial information — including HIPAA regulations and PII protection standards. I bring a detail-oriented, compliance-minded approach to IAM: understanding not just how access works, but why it matters for organizational security and regulatory accountability.</p>
         <p>Seeking remote-first IAM Analyst and Identity Security roles. Open to local Atlanta opportunities and available for contract, contract-to-hire, and full-time engagements.</p>
     </div>
@@ -386,6 +387,9 @@
                 <div class="cert-issuer">CompTIA</div>
                 <div class="cert-date">Issued Feb 2024 · Expires Feb 2027</div>
             </div>
+        </div>
+        <h3 style="margin-top:1.8rem;">Additional Training</h3>
+        <div class="cert-grid">
             <div class="cert-card">
                 <div class="cert-name">Cybersecurity Foundations: Governance, Risk, and Compliance (GRC)</div>
                 <div class="cert-issuer">LinkedIn Learning</div>
@@ -420,18 +424,18 @@
         </div>
     </div>
 
-    <!-- IAM LAB -->
+    <!-- HANDS-ON IAM EXPERIENCE -->
     <div class="section" id="lab">
-        <h2>IAM Lab Project</h2>
-        <h3>Microsoft Entra ID &amp; Active Directory — Hands-On IAM Build</h3>
-        <p style="margin-top:0.6rem;">A hands-on identity and access management build in a live Microsoft Entra ID tenant with a synced on-premises Active Directory forest, covering privileged access governance, Conditional Access, identity risk management, and hybrid identity — executed through the Entra admin center, Active Directory Users and Computers, and Microsoft Graph PowerShell.</p>
-        <p style="margin-top:0.5rem; color:#2d5a9e; font-size:0.82rem; font-style:italic;">Background: Transitioning into IAM from a compliance/GRC contractor role supporting a federal workforce program. This lab translates governance and audit experience into hands-on identity infrastructure work.</p>
+        <h2>Hands-On IAM Experience</h2>
+        <h3>Microsoft Entra ID &amp; Active Directory — Hands-On Implementations</h3>
+        <p style="margin-top:0.6rem;">An ongoing body of hands-on identity and access management work in a live Microsoft Entra ID tenant integrated with an independently built AD DS lab environment hosted on an Azure Windows Server VM. The work covers privileged access governance, Conditional Access, identity risk management, application access, hybrid identity, and directory administration using the Entra admin center, Microsoft Graph PowerShell, Active Directory Users and Computers, and appropriate AD administrative tools.</p>
+        <p style="margin-top:0.5rem; color:#2d5a9e; font-size:0.82rem; font-style:italic;">Background: Transitioning into IAM from a compliance/GRC contractor role supporting a federal workforce program. This hands-on work translates governance and audit experience into practical identity infrastructure implementation, testing, and validation.</p>
 
         <div class="lab-category">
             <h3>Access Governance, Privileged Access &amp; Hybrid Identity</h3>
             <div class="lab-item">
                 <strong>Conditional Access</strong>
-                <p>Layered policies built and staged in report-only before enforcement: blocking legacy authentication and requiring compliant-device status for Office 365 access. Validated using the What If tool and the Conditional Access insights workbook before going live.</p>
+                <p>Layered policies built and staged in report-only before enforcement: blocking legacy authentication and requiring compliant-device status for Office 365 access. Validated using the What If tool and the Conditional Access insights workbook before going live. Added a location-based Conditional Access control and validated the configured location condition against sign-in data and What If results before enforcement.</p>
             </div>
             <div class="lab-item">
                 <strong>Privileged Identity Management (PIM)</strong>
@@ -451,12 +455,20 @@
             </div>
             <div class="lab-item">
                 <strong>Hybrid Identity (Entra Connect)</strong>
-                <p>Installed Entra Connect on the domain controller, configured Password Hash Sync scoped to specific OUs, confirmed all AD users landed in Entra ID with OnPremisesSyncEnabled: true. Validated hybrid sign-in end-to-end, enabled password writeback, and tested Conditional Access MFA against synced users.</p>
+                <p>Installed Entra Connect in the Azure-hosted AD DS lab environment and configured Password Hash Synchronization for selected OUs. Monitored synchronization operations, confirmed synchronized users in Entra ID with OnPremisesSyncEnabled: true, and validated hybrid authentication and Conditional Access MFA for synchronized users. Enabled password writeback to support the tested SSPR workflow.</p>
+            </div>
+            <div class="lab-item">
+                <strong>Self-Service Password Reset (SSPR)</strong>
+                <p>Scoped SSPR to a pilot security group, required registration and two authentication methods, and tested the reset workflow with a synchronized user. Confirmed password writeback to the Azure-hosted AD DS lab environment, validating the hybrid reset path end to end.</p>
             </div>
         </div>
 
         <div class="lab-category">
             <h3>Application &amp; Workload Identity</h3>
+            <div class="lab-item">
+                <strong>Enterprise Application Access</strong>
+                <p>Configured an enterprise application to require assignment, assigned access to both a test user and a security group, and verified the resulting assignments and sign-in activity. Reviewed the application’s API permissions and admin-consent status as part of access validation.</p>
+            </div>
             <div class="lab-item">
                 <strong>App Registration &amp; API Permissions</strong>
                 <p>Registered an application with delegated (User.Read) and application-level (User.ReadWrite.All, Group.Read.All) Microsoft Graph permissions, granted admin consent, then audited credentials and flagged elevated permissions requiring business justification.</p>
@@ -479,15 +491,16 @@
             <h3>Directory Administration</h3>
             <div class="lab-item">
                 <strong>Active Directory Build</strong>
-                <p>Stood up a Windows Server 2025 domain controller from scratch on Azure, promoted to a new forest (jamielabstech.local), and confirmed AD DS and DNS roles.</p>
+                <p>Independently built a Windows Server 2025 domain controller on an Azure VM, promoted it to a new AD DS forest (jamielabstech.local), and confirmed the AD DS and DNS roles.</p>
             </div>
             <div class="lab-item">
-                <strong>OU Structure, GPOs &amp; Group-Based Licensing</strong>
+                <strong>OU Structure, GPOs, Licensing &amp; Group-Based Access</strong>
                 <p>Built a department-based OU hierarchy (IT/HR), created users and security groups, and configured GPOs including login banner and Control Panel restriction for both departments, with command-prompt restriction added for HR.</p>
+                <p>Assigned licenses through a security group and verified license propagation to member accounts. Used security-group membership for enterprise-application access and demonstrated joiner, mover, and leaver changes by adding, changing, and removing memberships, then validating the resulting access state.</p>
             </div>
             <div class="lab-item">
                 <strong>Verification Pattern</strong>
-                <p>Every change made in the portal was confirmed independently via Microsoft Graph PowerShell or AD cmdlets — mirroring real-world change validation rather than relying on a single source of truth.</p>
+                <p>Key Microsoft Entra ID configurations were independently validated with Microsoft Graph PowerShell, while Active Directory configurations were checked with appropriate AD administrative tools and cmdlets. This provided independent confirmation beyond a single administrative view.</p>
             </div>
         </div>
     </div>
